@@ -1,5 +1,17 @@
+import random
+
 # Global Variables
 
+# Create a tuple for Suits
+suits = ('Hearts', 'Diamonds', 'Clubs', 'Spades')
+# Create a tuple for Ranks
+ranks = ('Two', 'Three',
+         'Four', 'Five',
+         'Six', 'Seven',
+         'Eight', 'Nine',
+         'Ten', 'Jack',
+         'Queen', 'King',
+         'Ace')
 # Create a dictionary of values that has the string of the rank correspond to the integer.
 values = {'Two': 2, 'Three': 3,
           'Four': 4, 'Five': 5,
