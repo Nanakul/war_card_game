@@ -1,4 +1,5 @@
 import random
+import pdb
 
 # Global Variables
 
@@ -70,7 +71,7 @@ class Player:
 
     # Add card to player hand
     def add_cards(self, new_cards):
-        if type(new_cards) == type([]):
+        if isinstance(new_cards, list):
             # List of multiple card objects
             self.all_cards.extend(new_cards)
         else:
@@ -100,7 +101,7 @@ player_two = Player('AI 2')
 new_deck = Deck()
 new_deck.shuffle_deck()
 
-for x in range(26):
+for i in range(26):
     player_one.add_cards(new_deck.deal_one())
     player_two.add_cards(new_deck.deal_one())
 
@@ -129,4 +130,39 @@ while game_continue:
     player_two_cards = []
     player_two_cards.append(player_one.remove_one())
 
-    
+    random.shuffle(player_one_cards)
+    random.shuffle(player_two_cards)
+
+    if round_number == 100:
+        print('Game too long. No winner.')
+        game_continue = False
+
+    # while at war loop
+    at_war = True
+
+    while at_war:
+
+        if player_one_cards[-1].value > player_two_cards[-1].value:
+            player_one.add_cards(player_one_cards)
+            player_one.add_cards(player_two_cards)
+            at_war = False
+        elif player_one_cards[-1].value < player_two_cards[-1].value:
+            player_two.add_cards(player_one_cards)
+            player_two.add_cards(player_two_cards)
+            at_war = False
+        else:
+            print('WAR!!!')
+            if len(player_one.all_cards) < 5:
+                print(f'{player_one} cannot declare war.')
+                print(f'{player_two} wins!')
+                game_continue = False
+                break
+            elif len(player_two.all_cards) < 5:
+                print(f'{player_two} cannot declare war.')
+                print(f'{player_one} wins!')
+                game_continue = False
+                break
+            else:
+                for num in range(5):
+                    player_one_cards.append(player_one.remove_one())
+                    player_two_cards.append(player_two.remove_one())
