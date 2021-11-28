@@ -56,3 +56,26 @@ class Deck:
     def deal_one(self):
         return self.all_cards.pop()
 
+
+# Create a 'Player' class
+class Player:
+
+    def __init__(self, name):
+        self.name = name
+        self.all_cards = []
+
+    # Pop at 0 to draw from the TOP of the deck.
+    def remove_one(self):
+        return self.all_cards.pop(0)
+
+    # Add card to player hand
+    def add_cards(self, new_cards):
+        if type(new_cards) == type([]):
+            # List of multiple card objects
+            self.all_cards.extend(new_cards)
+        else:
+            # For single card objects
+            self.all_cards.append(new_cards)
+
+    def __str__(self):
+        return f'{self.name} has {len(self.all_cards)} cards.'
