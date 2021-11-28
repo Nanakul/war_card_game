@@ -79,3 +79,32 @@ class Player:
 
     def __str__(self):
         return f'{self.name} has {len(self.all_cards)} cards.'
+
+
+# GAME LOGIC OUTLINE
+# 1.) Create two players (computers).
+# 2.) Create instance of a new deck. NOTE: Need to shuffle!
+# 3.) Split the cards between P1 and P2
+
+# START OF GAME LOGIC OUTLINE
+# 4.) Check to see if game continues (Won't be the case at the beginning,
+#     but we check at the end of each round.
+# 5.) Create game_continue/end variables to know whether ot not to proceed.
+# 6.) Create while loop for while game is continuing...
+# 7.) Create a while 'at war' loop in case of war within a war.
+
+# GAME SETUP
+player_one = Player('AI 1')
+player_two = Player('AI 2')
+
+new_deck = Deck()
+new_deck.shuffle_deck()
+
+for x in range(26):
+    player_one.add_cards(new_deck.deal_one())
+    player_two.add_cards(new_deck.deal_one())
+
+game_continue = True
+round_number = 0
+
+# GAME CONTINUE
