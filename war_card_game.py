@@ -128,7 +128,7 @@ while game_continue:
     player_one_cards.append(player_one.remove_one())
 
     player_two_cards = []
-    player_two_cards.append(player_one.remove_one())
+    player_two_cards.append(player_two.remove_one())
 
     random.shuffle(player_one_cards)
     random.shuffle(player_two_cards)
