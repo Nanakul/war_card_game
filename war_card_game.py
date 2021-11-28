@@ -4,6 +4,7 @@ import random
 
 # Create a tuple for Suits
 suits = ('Hearts', 'Diamonds', 'Clubs', 'Spades')
+
 # Create a tuple for Ranks
 ranks = ('Two', 'Three',
          'Four', 'Five',
@@ -12,6 +13,7 @@ ranks = ('Two', 'Three',
          'Ten', 'Jack',
          'Queen', 'King',
          'Ace')
+
 # Create a dictionary of values that has the string of the rank correspond to the integer.
 values = {'Two': 2, 'Three': 3,
           'Four': 4, 'Five': 5,
@@ -22,8 +24,7 @@ values = {'Two': 2, 'Three': 3,
           'Ace': 14}
 
 
-# Create a 'Card' class that takes in the Suit, Rank, and Value
-
+# Create a 'Card' class
 class Card:
 
     def __init__(self, suit, rank):
@@ -33,3 +34,25 @@ class Card:
 
     def __str__(self):
         return self.rank + ' of ' + self.suit
+
+
+# Create a 'Deck' class
+class Deck:
+
+    def __init__(self):
+        self.all_cards = []
+
+        for suit in suits:
+            for rank in ranks:
+                # Create card object
+                created_card = Card(suit, rank)
+                self.all_cards.append(created_card)
+
+    # Shuffle Deck
+    def shuffle_deck(self):
+        random.shuffle(self.all_cards)
+
+    # Deal one card
+    def deal_one(self):
+        return self.all_cards.pop()
+
