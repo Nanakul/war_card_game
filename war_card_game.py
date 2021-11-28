@@ -108,3 +108,25 @@ game_continue = True
 round_number = 0
 
 # GAME CONTINUE
+while game_continue:
+    round_number += 1
+    print(f'Round {round_number}')
+
+    if len(player_one.all_cards) == 0:
+        print(f'{player_one} is out of cards! {player_two} wins!')
+        game_continue = False
+        break
+
+    if len(player_two.all_cards) == 0:
+        print(f'{player_two} is out of cards! {player_one} wins!')
+        game_continue = False
+        break
+
+    # NEW ROUND
+    player_one_cards = []
+    player_one_cards.append(player_one.remove_one())
+
+    player_two_cards = []
+    player_two_cards.append(player_one.remove_one())
+
+    
